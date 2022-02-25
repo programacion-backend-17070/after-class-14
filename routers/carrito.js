@@ -23,7 +23,11 @@ router.post("/:id/productos", async (req, res) => {
   
   try {
     await Carrito.agregarProducto(id, body)
-    res.sendStatus(201) // HTTP Created
+    // res.status(201).send({
+    //   code: 0
+    // })
+
+    res.sendStatus(201)
   } catch(e) {
     if (e.message === "no existe") {
       res.sendStatus(404) // HTTP Not Found
@@ -41,5 +45,8 @@ router.delete("/:id/productos/:prod", async (req, res) => {
 
   res.sendStatus(202)
 })
+
+
+
 
 module.exports = router
